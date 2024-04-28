@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :albums do
+    resources :songs, only: [:index, :show]
+  end
+  resources :songs, only: [:index]  # This allows a top-level 'songs' route
+  root "home#index"
 end

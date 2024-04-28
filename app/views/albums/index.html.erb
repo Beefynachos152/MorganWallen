@@ -1,0 +1,26 @@
+<h1>Albums</h1>
+<input type="text" id="album-search" placeholder="Search albums...">
+<ul id="album-list">
+  <% @albums.uniq.each do |album| %>
+    <li>
+      <%= link_to album.name, album_path(album) %>
+      (<%= album.release_date %>)
+    </li>
+  <% end %>
+</ul>
+
+<script>
+document.getElementById('album-search').addEventListener('keyup', function() {
+  var query = this.value.toLowerCase();
+  var albums = document.getElementById('album-list').getElementsByTagName('li');
+  for (var i = 0; i < albums.length; i++) {
+    var album = albums[i].innerText.toLowerCase();
+    if (album.includes(query)) {
+      albums[i].style.display = '';
+    } else {
+      albums[i].style.display = 'none';
+    }
+  }
+});
+</script>
+

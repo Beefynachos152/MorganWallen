@@ -1,0 +1,11 @@
+<!-- app/views/songs/index.html.erb -->
+<h1>Songs in <%= @album.name %></h1>
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <%= link_to song.title, album_song_path(@album, song) %> - <%= song.duration %> seconds
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Album', album_path(@album) %>
