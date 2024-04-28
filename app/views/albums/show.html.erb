@@ -1,13 +1,25 @@
-<!-- app/views/albums/show.html.erb -->
-<h1><%= @album.name %></h1>
-<p>Release Date: <%= @album.release_date %></p>
-<p>Artist: <%= @album.artist %></p>
+<div class="container mt-5">  
+  <div class="card">  
+    <div class="card-header text-center">  
+      <h1 class="display-4"><%= @album.name %></h1> 
+    </div>
 
-<h2>Songs in this album:</h2>
-<ul>
-  <% @album.songs.each do |song| %>
-    <li>
-      <%= link_to song.title, album_song_path(@album, song) %>
-    </li>
-  <% end %>
-</ul>
+<div class="card-body"> 
+  <p><strong>Release Date:</strong> <%= @album.release_date || "TBD" %></p> 
+  <p><strong>Artist:</strong> <%= @album.artist %></p>  
+</div>
+
+
+    <div class="card-footer">  
+      <h2>Songs in this album:</h2>  
+
+      <ul class="list-group">  
+        <% @album.songs.each do |song| %>  
+          <li class="list-group-item">  
+            <%= link_to song.title, album_song_path(@album, song) %> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

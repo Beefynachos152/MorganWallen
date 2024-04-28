@@ -1,4 +1,12 @@
-<!-- app/views/songs/show.html.erb -->
-<h1><%= @song.title %></h1>
-<p>Duration: <%= @song.duration %> seconds</p>
-<p>Album: <%= @album.name %>
+<div class="container mt-5"> 
+  <div class="card">  
+    <div class="card-header text-center"> 
+      <h1 class="display-4"><%= @song.title %></h1>  
+    </div>
+
+    <div class="card-body"> 
+      <p><strong>Duration:</strong> <%= @song.duration %> seconds</p> 
+      <p><strong>Album:</strong> <%= @album.name %></p>
+    </div>
+  </div>
+</div>

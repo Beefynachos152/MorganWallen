@@ -1,26 +1,37 @@
-<h1>Albums</h1>
-<input type="text" id="album-search" placeholder="Search albums...">
-<ul id="album-list">
-  <% @albums.uniq.each do |album| %>
-    <li>
-      <%= link_to album.name, album_path(album) %>
-      (<%= album.release_date %>)
-    </li>
-  <% end %>
-</ul>
+<div class="container mt-5">  
+  <h1 class="mb-3 text-center">Albums</h1> 
+
+  <div class="form-group">  
+    <input
+      type="text"
+      id="album-search"
+      class="form-control"
+      placeholder="Search albums..." 
+    />
+  </div>
+
+ 
+  <ul class="list-group" id="album-list"> 
+    <% @albums.uniq.each do |album| %>  
+      <li class="list-group-item">  
+        <%= link_to album.name, album_path(album) %>  
+
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <script>
 document.getElementById('album-search').addEventListener('keyup', function() {
-  var query = this.value.toLowerCase();
-  var albums = document.getElementById('album-list').getElementsByTagName('li');
-  for (var i = 0; i < albums.length; i++) {
+  var query = this.value.toLowerCase();  <!-- Get the search query -->
+  var albums = document.getElementById('album-list').getElementsByTagName('li'); 
+  for (var i = 0; i < albums.length; i++) {  <!-- Loop through albums -->
     var album = albums[i].innerText.toLowerCase();
-    if (album.includes(query)) {
-      albums[i].style.display = '';
+    if (album.includes(query)) {  
+      albums[i].style.display = ''; 
     } else {
-      albums[i].style.display = 'none';
+      albums[i].style.display = 'none'; 
     }
   }
 });
 </script>
-
